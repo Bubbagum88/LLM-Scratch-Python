@@ -16,60 +16,30 @@ by training a model that can understand dataset characteristics and recommend th
 
 
 LLM‑From‑Scratch Workflow
-                    ┌────────────────────────┐
-                    │   Raw Dataset (CSV)    │
-                    └──────────┬────────────┘
-                               │
-                               ▼
-                  ┌───────────────────────────┐
-                  │ Dataset Profiling Module   │
-                  │  (Deterministic)          │
-                  │---------------------------│
-                  │ - n_samples               │
-                  │ - n_features              │
-                  │ - feature types           │
-                  │ - sparsity, missing %     │
-                  │ - correlation/skewness    │
-                  │ - class imbalance/entropy │
-                  └──────────┬────────────────┘
-                             │
-                             ▼
-               ┌─────────────────────────────┐
-               │ Meta-Feature Vector         │
-               │ (Structured Numerical Data)│
-               └──────────┬──────────────────┘
-                          │
-                          ▼
-       ┌─────────────────────────────┐
-       │ Meta-Learning Model          │
-       │ (Classical ML Classifier)    │
-       │-----------------------------│
-       │ Input: meta-features        │
-       │ Output: algorithm ranking   │
-       └──────────┬──────────────────┘
-                  │
-       ┌──────────┴───────────┐
-       │                      │
-       ▼                      ▼
-┌───────────────┐     ┌──────────────────┐
-│ Ranked Algorithm│     │ Optional LLM     │
-│ Recommendations │     │ Explanation Layer│
-│ (Top-1, Top-3) │     │  Converts ranking│
-└───────────────┘     │  into natural text│
-                      └──────────┬────────┘
-                                 │
-                                 ▼
-                        ┌──────────────────┐
-                        │ Evaluation Suite │
-                        │-----------------│
-                        │ Top-1 / Top-3    │
-                        │ Accuracy         │
-                        │ Performance Gap  │
-                        │ Baseline Comparison │
-                        └──────────────────┘
+
+Raw Dataset (CSV)
+        │
+        ▼
+Dataset Profiling Module (Deterministic)
+        │
+        ▼
+Meta-Feature Vector (Structured Numerical Data)
+        │
+        ▼
+Meta-Learning Model (Classical ML Classifier)
+        │
+        ▼
+Ranked Algorithm Recommendations
+        │
+        ▼
+Optional LLM Explanation Layer (Generates textual reasoning)
+        │
+        ▼
+Evaluation Suite (Top-1/Top-3 Accuracy, Performance Gap, Baselines)
 
 # Helpful resources:
 https://www.youtube.com/@ShawhinTalebi/
+
 
 
 
